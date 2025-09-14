@@ -14,6 +14,9 @@
   --knob-bg: #f9fafb;
   --shadow-strong: rgba(0,0,0,0.18);
   --shadow-soft: rgba(0,0,0,0.10);
+
+  /* Track artwork (light mode) */
+  --track-img: url('assets/anakin skywalker.jpg');
 }
 
 body.theme-dark {
@@ -24,6 +27,8 @@ body.theme-dark {
   --knob-bg: #1a1f2e;
   --shadow-strong: rgba(0,0,0,0.55);
   --shadow-soft: rgba(0,0,0,0.35);
+  /* Track artwork (dark mode) */
+  --track-img: url('assets/death wader.jpeg');
 }
 
 html, body { height: 100%; }
@@ -93,13 +98,18 @@ body.theme-dark::before {
   width: var(--track-w);
   height: var(--track-h);
   border-radius: calc(var(--track-h) / 2);
-  background: var(--track-off);
+  background-color: var(--track-off);
+  background-image: var(--track-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
   display: inline-block;
   box-shadow:
     inset 0 10px 16px var(--shadow-soft),
     inset 0 -10px 16px rgba(255,255,255,0.75);
   transition: background 240ms ease, box-shadow 240ms ease, transform 200ms ease;
+  overflow: hidden; /* clip background to rounded track */
 }
 
 /* Moving shine inside the track (inside animation) */
@@ -159,7 +169,7 @@ body.theme-dark::before {
 
 /* Checked state */
 #big-toggle:checked + .toggle {
-  background: var(--track-on);
+  /* keep the image; just adjust shading when ON */
   box-shadow:
     inset 0 6px 14px rgba(0,0,0,0.1),
     inset 0 -10px 18px rgba(255,255,255,0.5);
@@ -201,4 +211,3 @@ body.theme-dark #big-toggle:checked + .toggle::after {
   body::before, .toggle::after { animation: none !important; }
   .toggle, .knob { transition: none !important; }
 }
-
