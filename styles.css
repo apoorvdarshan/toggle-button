@@ -17,6 +17,12 @@
 
   /* Track artwork (light mode) */
   --track-img: url('assets/light-bg.jpg');
+
+  /* Motion tuning */
+  --knob-speed: 900ms; /* slower knob slide */
+  --fade-speed: 600ms; /* smoother crossfades */
+  --shine-speed: 7s;   /* slower inner sweep */
+  --knob-ring: 12px;   /* white ring thickness around knob */
 }
 
 body.theme-dark {
@@ -99,7 +105,10 @@ body.theme-dark::before {
   height: var(--track-h);
   border-radius: calc(var(--track-h) / 2);
   background-color: var(--track-off);
-  background-image: var(--track-img);
+  /* subtle gradient overlay on top of the image for depth */
+  background-image: 
+    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(255,255,255,0.05) 38%, rgba(0,0,0,0.35)),
+    var(--track-img);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,8 +117,9 @@ body.theme-dark::before {
   box-shadow:
     inset 0 10px 16px var(--shadow-soft),
     inset 0 -10px 16px rgba(255,255,255,0.75);
-  transition: background 240ms ease, box-shadow 240ms ease, transform 200ms ease;
+  transition: background 340ms ease, box-shadow 340ms ease, transform 200ms ease;
   overflow: hidden; /* clip background to rounded track */
+  will-change: transform;
 }
 
 /* Moving shine inside the track (inside animation) */
@@ -120,7 +130,7 @@ body.theme-dark::before {
   border-radius: inherit;
   background: linear-gradient(100deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.18) 45%, rgba(255,255,255,0) 60%);
   background-size: 200% 100%;
-  animation: sweep 2.6s linear infinite;
+  animation: sweep var(--shine-speed) linear infinite;
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -152,27 +162,29 @@ body.theme-dark::before {
   height: var(--knob);
   border-radius: 999px;
   background: var(--knob-bg);
+  border: var(--knob-ring) solid rgba(255,255,255,0.92);
   transform: translate(0, -50%);
   box-shadow:
-    0 16px 26px var(--shadow-soft),
+    0 18px 28px var(--shadow-soft),
     inset 0 1px 0 rgba(255,255,255,0.95);
   display: grid;
   place-items: center;
   overflow: hidden;
-  transition: transform 260ms cubic-bezier(.2,.8,.2,1), background 220ms ease, box-shadow 220ms ease;
+  transition: transform var(--knob-speed) cubic-bezier(.16,1,.3,1), background 280ms ease, box-shadow 280ms ease;
+  will-change: transform;
 }
 
 /* Sun/Moon icons inside knob */
 .icon {
   position: absolute;
-  width: 86%;
-  height: 86%;
+  width: 82%;
+  height: 82%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   object-fit: cover;
-  transition: opacity 240ms ease, transform 400ms ease;
+  transition: opacity var(--fade-speed) ease, transform calc(var(--fade-speed) + 150ms) ease;
   user-select: none;
   pointer-events: none;
 }
@@ -190,11 +202,11 @@ body.theme-dark::before {
 #big-toggle:checked + .toggle::before { opacity: 1; transform: scale(1); }
 
 #big-toggle:checked + .toggle .knob {
-  transform: translate(calc(var(--track-w) - var(--knob) - var(--gap) * 2), -50%);
+  transform: translate(calc(var(--track-w) - var(--knob) - var(--gap) * 2 - var(--knob-ring) * 2), -50%);
   background: #ffffff;
 }
 
-#big-toggle:checked + .toggle .sun  { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(0.8); }
+#big-toggle:checked + .toggle .sun  { opacity: 0; transform: translate(-50%, -50%) rotate(6deg) scale(0.94); }
 #big-toggle:checked + .toggle .moon { opacity: 1; transform: translate(-50%, -50%) rotate(0deg)  scale(1); }
 
 /* Dark mode stars inside the track */
