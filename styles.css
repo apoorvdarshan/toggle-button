@@ -16,7 +16,7 @@
   --shadow-soft: rgba(0,0,0,0.10);
 
   /* Track artwork (light mode) */
-  --track-img: url('assets/anakin skywalker.jpg');
+  --track-img: url('assets/light-bg.jpg');
 }
 
 body.theme-dark {
@@ -28,7 +28,7 @@ body.theme-dark {
   --shadow-strong: rgba(0,0,0,0.55);
   --shadow-soft: rgba(0,0,0,0.35);
   /* Track artwork (dark mode) */
-  --track-img: url('assets/death wader.jpeg');
+  --track-img: url('assets/dark-bg.jpg');
 }
 
 html, body { height: 100%; }
@@ -163,9 +163,21 @@ body.theme-dark::before {
 }
 
 /* Sun/Moon icons inside knob */
-.icon { position: absolute; width: 58%; height: 58%; transition: opacity 240ms ease, transform 400ms ease; }
-.sun  { opacity: 1;  transform: rotate(0deg) scale(1); }
-.moon { opacity: 0;  transform: rotate(-30deg) scale(0.8); }
+.icon {
+  position: absolute;
+  width: 86%;
+  height: 86%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 240ms ease, transform 400ms ease;
+  user-select: none;
+  pointer-events: none;
+}
+.sun  { opacity: 1;  transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+.moon { opacity: 0;  transform: translate(-50%, -50%) rotate(-10deg) scale(0.9); }
 
 /* Checked state */
 #big-toggle:checked + .toggle {
@@ -182,8 +194,8 @@ body.theme-dark::before {
   background: #ffffff;
 }
 
-#big-toggle:checked + .toggle .sun  { opacity: 0; transform: rotate(90deg) scale(0.8); }
-#big-toggle:checked + .toggle .moon { opacity: 1; transform: rotate(0deg)  scale(1); }
+#big-toggle:checked + .toggle .sun  { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(0.8); }
+#big-toggle:checked + .toggle .moon { opacity: 1; transform: translate(-50%, -50%) rotate(0deg)  scale(1); }
 
 /* Dark mode stars inside the track */
 body.theme-dark #big-toggle:checked + .toggle::after {
