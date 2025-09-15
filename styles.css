@@ -69,6 +69,12 @@ body {
   overflow: hidden;
 }
 
+/* Remove blue tap highlight on mobile browsers (iOS/Android) */
+/* Keep focus-visible outlines for accessibility */
+a, label, .toggle, .icon-btn, .site-header, .site-footer {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Layout helpers */
 .content { flex: 1; width: 100%; display: grid; place-items: center; }
 
