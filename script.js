@@ -37,6 +37,21 @@ function playThemeSound(theme) {
   a.play().catch(() => {});
 }
 
+function updateInteractiveUI(isDark) {
+  const lightPill = document.getElementById('legend-light');
+  const darkPill = document.getElementById('legend-dark');
+  const quoteEl = document.getElementById('sw-quote');
+  if (lightPill && darkPill) {
+    lightPill.classList.toggle('active', !isDark);
+    darkPill.classList.toggle('active', isDark);
+  }
+  if (quoteEl) {
+    quoteEl.textContent = isDark
+      ? 'I find your lack of faith disturbing. — Darth Vader'
+      : 'The Force will be with you. Always. — Obi‑Wan Kenobi';
+  }
+}
+
 const applyTheme = (theme, { silent = false } = {}) => {
   const dark = theme === 'dark';
   document.body.classList.toggle('theme-dark', dark);
@@ -44,6 +59,7 @@ const applyTheme = (theme, { silent = false } = {}) => {
   if (bigToggle) bigToggle.checked = dark;
   document.title = `Big Toggle — ${dark ? 'Dark' : 'Light'}`;
   try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
+  updateInteractiveUI(dark);
   if (!silent) playThemeSound(dark ? 'dark' : 'light');
 };
 
@@ -64,3 +80,5 @@ const applyTheme = (theme, { silent = false } = {}) => {
 if (bigToggle) {
   bigToggle.addEventListener('change', () => applyTheme(bigToggle.checked ? 'dark' : 'light'));
 }
+
+// Removed WiFi UI; replaced with lore panels.
