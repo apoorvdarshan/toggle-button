@@ -197,6 +197,13 @@ body.theme-dark::after { --line: rgba(255,0,32,0.12); --diag: rgba(255,0,32,0.06
 
 .wrap { text-align: center; }
 
+/* Title and description blocks */
+.sw-text { max-width: min(980px, 92vw); margin-inline: auto; }
+.sw-top { margin-bottom: 24px; }
+.sw-bottom { margin-top: 16px; }
+.sw-title { font-family: 'Teko', system-ui, sans-serif; font-size: clamp(28px, 5vw, 48px); letter-spacing: 2px; text-shadow: 0 2px 0 rgba(0,0,0,0.6), 0 0 18px rgba(255,255,255,0.1); margin: 0; }
+.sw-body { font-family: 'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: none; font-size: clamp(14px, 2.2vw, 18px); line-height: 1.6; opacity: 0.92; text-align: center; }
+
 /* Legend above the toggle */
 .legend { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; opacity: 0.95; }
 .legend .vs { opacity: 0.6; font-size: 13px; }
