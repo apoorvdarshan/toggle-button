@@ -1,6 +1,5 @@
 // Theme initialization: respect saved preference or system
 const bigToggle = document.getElementById('big-toggle');
-const miniToggle = document.getElementById('mini-toggle');
 
 // Preload theme sounds
 const sounds = {
@@ -41,9 +40,8 @@ function playThemeSound(theme) {
 const applyTheme = (theme, { silent = false } = {}) => {
   const dark = theme === 'dark';
   document.body.classList.toggle('theme-dark', dark);
-  // keep both controls in sync
+  // keep control in sync
   if (bigToggle) bigToggle.checked = dark;
-  if (miniToggle) miniToggle.checked = dark;
   document.title = `Big Toggle — ${dark ? 'Dark' : 'Light'}`;
   try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
   if (!silent) playThemeSound(dark ? 'dark' : 'light');
@@ -63,6 +61,6 @@ const applyTheme = (theme, { silent = false } = {}) => {
 })();
 
 // Toggle handlers
-[bigToggle, miniToggle].filter(Boolean).forEach(cb => {
-  cb.addEventListener('change', () => applyTheme(cb.checked ? 'dark' : 'light'));
-});
+if (bigToggle) {
+  bigToggle.addEventListener('change', () => applyTheme(bigToggle.checked ? 'dark' : 'light'));
+}
