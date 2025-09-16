@@ -141,11 +141,11 @@ body::before {
   inset: -20vmax;
   z-index: -1;
   background:
-    repeating-linear-gradient(-35deg, rgba(255,0,32,0.06) 0 2px, transparent 2px 20px),
-    linear-gradient(120deg, rgba(255,0,32,0.12), rgba(0,0,0,0) 40%),
-    radial-gradient(100vmax 55vmax at 120% -10%, rgba(255,0,32,0.18), rgba(0,0,0,0) 70%),
-    radial-gradient(60vmax 50vmax at -20% 110%, rgba(0,90,180,0.15), rgba(0,0,0,0) 60%),
-    linear-gradient(#0d0f15, #05070c);
+    repeating-linear-gradient(-35deg, rgba(59,130,246,0.12) 0 2px, transparent 2px 20px),
+    linear-gradient(120deg, rgba(96,165,250,0.28), rgba(255,255,255,0) 45%),
+    radial-gradient(120vmax 60vmax at 120% -10%, rgba(191,219,254,0.45), rgba(255,255,255,0) 70%),
+    radial-gradient(70vmax 55vmax at -20% 110%, rgba(167,243,208,0.35), rgba(255,255,255,0) 60%),
+    linear-gradient(#eef2ff, #dbeafe);
   filter: saturate(1.05);
   transform: translateZ(0);
   animation: floatLight 16s ease-in-out infinite alternate;
