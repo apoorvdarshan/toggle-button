@@ -106,7 +106,7 @@ a, label, .toggle, .icon-btn, .site-header, .site-footer {
 .site-footer a { color: inherit; text-decoration: none; border-bottom: 1px dashed rgba(0,0,0,0.25); }
 body.theme-dark .site-footer a { border-color: rgba(255,255,255,0.35); }
 .site-footer a:hover { border-bottom-style: solid; }
-.socials { display: flex; gap: var(--icon-gap); flex-wrap: wrap; justify-content: center; font-size: 14px; }
+.socials { display: flex; gap: var(--icon-gap); flex-wrap: nowrap; justify-content: center; font-size: 14px; }
 
 /* Icon-only buttons for socials */
 .socials a { border-bottom: none !important; }
