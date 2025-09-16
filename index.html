@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Teko:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="ambient ambient-light" aria-hidden="true"></div>
+    <div class="ambient ambient-dark" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sw-text sw-top">
         <h2 class="sw-title only-dark">Darth Vader</h2>
@@ -21,6 +23,10 @@
         aria-label="Big toggle"
       />
       <label for="big-toggle" class="toggle" role="switch" aria-hidden="true">
+        <span class="track" aria-hidden="true">
+          <span class="track-layer track-layer-light"></span>
+          <span class="track-layer track-layer-dark"></span>
+        </span>
         <span class="knob">
           <!-- Light-mode knob image -->
           <img class="icon sun" src="assets/knob-light.jpg" alt="" />

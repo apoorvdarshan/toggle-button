@@ -81,4 +81,6 @@ if (bigToggle) {
   bigToggle.addEventListener('change', () => applyTheme(bigToggle.checked ? 'dark' : 'light'));
 }
 
+window.requestAnimationFrame(() => document.body.classList.add('theme-ready'));
+
 // Removed WiFi UI; replaced with lore panels.
