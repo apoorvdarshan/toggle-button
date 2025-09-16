@@ -23,7 +23,7 @@
   --knob-speed: 900ms; /* slower knob slide */
   --fade-speed: 600ms; /* smoother crossfades */
   --shine-speed: 7s;   /* slower inner sweep */
-  --knob-ring: 12px;   /* white ring thickness around knob */
+  --knob-ring: 8px;    /* white ring thickness around knob */
 
   /* Social icons defaults (adjust anytime) */
   --icon-size: clamp(36px, 4.5vmin, 46px);
